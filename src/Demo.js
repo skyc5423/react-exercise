@@ -1,6 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route, Outlet } from "react-router-dom";
 import "./Demo.css";
+import DemoOption1 from "./DemoPages/DemoOption1";
+import DemoOption2 from "./DemoPages/DemoOption2";
+import DemoOption3 from "./DemoPages/DemoOption3";
 
 function Demo() {
   return (
@@ -20,8 +23,16 @@ function Demo() {
         </ul>
       </nav>
       <main className="demo-content">
-        <h1>Demo Page</h1>
-        <p>Select a demo option from the left sidebar.</p>
+        <Routes>
+          <Route
+            index
+            element={<p>Select a demo option from the left sidebar.</p>}
+          />
+          <Route path="option1" element={<DemoOption1 />} />
+          <Route path="option2" element={<DemoOption2 />} />
+          <Route path="option3" element={<DemoOption3 />} />
+        </Routes>
+        <Outlet />
       </main>
     </div>
   );
